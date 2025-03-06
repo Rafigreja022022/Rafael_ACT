@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/usuario/saucedemo-automation.git'
+            }
+        }
+
+        stage('Compilar e Testar') {
+            steps {
+                sh 'mvn clean test'
+            }
+        }
+
+        stage('Relatórios') {
+            steps {
+                publishHTML(target: [
+                    reportName: 'Cucumber HTML Report',
+                    reportDir: 'target',
+                    reportFiles: 'cucumber-reports.html'
+                ])
+            }
+        }
+    }
+}
