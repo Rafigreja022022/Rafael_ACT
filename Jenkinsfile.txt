@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Rafigreja022022/Rafael_ACT'
+                git 'https://github.com/usuario/saucedemo-automation.git'
             }
         }
 
